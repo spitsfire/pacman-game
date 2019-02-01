@@ -8,18 +8,128 @@
 </head>
 <body>
     <style>
-        /* CSS GOES HERE */
+        body{
+            background-color: black;
+        }
+        .row div{
+            width: 30px;
+            height: 30px;
+            /* border: 1px solid black; */
+            display: inline-block;
+        }
+        .wall{
+            background-color: blue;
+        }
+        .coin{
+            background: url('img/coin-icon.png');
+            background-position: center;
+            background-size: 50%;
+            background-repeat: no-repeat;
+        }
+        .empty{
+            background: none;
+        }
+        .pacman{
+            background: url('img/pacman-icon.gif');
+            background-position: center;
+            background-size: 75%;
+            background-repeat: no-repeat;
+        }
     </style>
 
     <!-- HTML GOES HERE -->
-
+    <div class="row">
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+    </div>
+    <div class="row">
+        <div class="wall"></div>
+        <div class="empty"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="pacman"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="wall"></div>
+    </div>
+    <div class="row">
+        <div class="wall"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="wall"></div>
+    </div>
+    <div class="row">
+        <div class="wall"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="wall"></div>
+    </div>
+    <div class="row">
+        <div class="wall"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="wall"></div>
+    </div>
+    <div class="row">
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+    </div>
     <script type="text/javascript">
         // JavaScript GOES HERE
+        // 2 = wall; 1 = coin; 0 = space;
+        var board = [
+            [2,2,2,2,2,2,2,2,2,2],
+            [2,0,1,1,1,1,1,1,1,2],
+            [2,1,1,1,1,1,1,1,1,2],
+            [2,1,1,1,1,1,1,1,1,2],
+            [2,1,1,1,1,1,1,1,1,2],
+            [2,1,1,1,1,1,1,1,1,2],
+            [2,1,1,1,1,1,1,1,1,2],
+            [2,1,1,1,1,1,1,1,1,2],
+            [2,1,1,1,1,1,1,1,1,2],
+            [2,2,2,2,2,2,2,2,2,2]
+        ];
     </script>
 </body>
 
 </html>
-<!-- 
+<!--
     =================
        TO-DO LIST
     ================
@@ -30,5 +140,5 @@
     Pacman cannot move into a spot that is marked as a “wall”
     Create and increment a score total
     Create a ghost object
-    When Pacman collides w/ the ghost, display Game Over and button to reset the game board 
+    When Pacman collides w/ the ghost, display Game Over and button to reset the game board
 -->
