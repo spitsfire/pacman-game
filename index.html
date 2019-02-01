@@ -10,6 +10,8 @@
     <style>
         body{
             background-color: black;
+            margin: 0;
+            font-size: 0;
         }
         .row div{
             width: 30px;
@@ -29,87 +31,20 @@
         .empty{
             background: none;
         }
-        .pacman{
+        #pacman{
+            height: 30px;
+            width: 30px;
             background: url('img/pacman-icon.gif');
             background-position: center;
             background-size: 75%;
             background-repeat: no-repeat;
+            position: absolute;
         }
     </style>
 
     <!-- HTML GOES HERE -->
-    <div class="row">
-        <div class="wall"></div>
-        <div class="wall"></div>
-        <div class="wall"></div>
-        <div class="wall"></div>
-        <div class="wall"></div>
-        <div class="wall"></div>
-        <div class="wall"></div>
-        <div class="wall"></div>
-        <div class="wall"></div>
-        <div class="wall"></div>
-    </div>
-    <div class="row">
-        <div class="wall"></div>
-        <div class="empty"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="pacman"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="wall"></div>
-    </div>
-    <div class="row">
-        <div class="wall"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="wall"></div>
-    </div>
-    <div class="row">
-        <div class="wall"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="wall"></div>
-    </div>
-    <div class="row">
-        <div class="wall"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="coin"></div>
-        <div class="wall"></div>
-    </div>
-    <div class="row">
-        <div class="wall"></div>
-        <div class="wall"></div>
-        <div class="wall"></div>
-        <div class="wall"></div>
-        <div class="wall"></div>
-        <div class="wall"></div>
-        <div class="wall"></div>
-        <div class="wall"></div>
-        <div class="wall"></div>
-        <div class="wall"></div>
-    </div>
+    <div id="board"></div>
+    <div id="pacman" style="top: 0px; left: 0px;"></div>
     <script type="text/javascript">
         // JavaScript GOES HERE
         // 2 = wall; 1 = coin; 0 = space;
@@ -125,6 +60,55 @@
             [2,1,1,1,1,1,1,1,1,2],
             [2,2,2,2,2,2,2,2,2,2]
         ];
+
+        var pacman = {
+            y: 0,
+            x: 0
+        };
+
+        function displayBoard(){
+            var output = "";
+            for(var y=0; y<board.length; y++){
+                output += "\n<div class='row'>"
+                for(var x=0; x<board[y].length; x++){
+                    if(board[y][x] == 2){
+                        output += "\n\t<div class='wall'></div>";
+                    }
+                    else if(board[y][x] == 1){
+                        output += "\n\t<div class='coin'></div>";
+                    }
+                    else if(board[y][x] == 0){
+                        output += "\n\t<div class='empty'></div>";
+                    }
+                }
+                output += "\n</div>";
+            }
+            document.getElementById('board').innerHTML = output;
+        }
+        function displayPacman(){
+            document.getElementById('pacman').style.left = pacman.x+"px";
+            document.getElementById('pacman').style.top = pacman.y+"px";
+        }
+        document.onkeydown = function(e){
+            // RIGHT
+            if(e.keyCode == 39){
+                pacman.x += 30;
+            }
+            // LEFT
+            else if(e.keyCode == 37){
+                pacman.x -= 30;
+            }
+            // UP
+            else if(e.keyCode == 38){
+                pacman.y -= 30;
+            }
+            // DOWN
+            else if(e.keyCode == 40){
+                pacman.y += 30;
+            }
+            displayPacman();
+        }
+        displayBoard();
     </script>
 </body>
 
