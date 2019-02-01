@@ -40,11 +40,17 @@
             background-repeat: no-repeat;
             position: absolute;
         }
+        #score{
+            color: white;
+            margin: 10px;
+            font-size: 16pt;
+        }
     </style>
 
     <!-- HTML GOES HERE -->
     <div id="board"></div>
-    <div id="pacman" style="top: 0px; left: 0px;"></div>
+    <div id="pacman"></div>
+    <div id="score"></div>
     <script type="text/javascript">
         // JavaScript GOES HERE
         // 2 = wall; 1 = coin; 0 = space;
@@ -62,8 +68,8 @@
         ];
 
         var pacman = {
-            y: 0,
-            x: 0
+            y: 1,
+            x: 1
         };
 
         function displayBoard(){
@@ -86,29 +92,34 @@
             document.getElementById('board').innerHTML = output;
         }
         function displayPacman(){
-            document.getElementById('pacman').style.left = pacman.x+"px";
-            document.getElementById('pacman').style.top = pacman.y+"px";
+            document.getElementById('pacman').style.left = pacman.x*30+"px";
+            document.getElementById('pacman').style.top = pacman.y*30+"px";
         }
         document.onkeydown = function(e){
             // RIGHT
             if(e.keyCode == 39){
-                pacman.x += 30;
+                pacman.x++;
             }
             // LEFT
             else if(e.keyCode == 37){
-                pacman.x -= 30;
+                pacman.x--;
             }
             // UP
             else if(e.keyCode == 38){
-                pacman.y -= 30;
+                pacman.y--;
             }
             // DOWN
             else if(e.keyCode == 40){
-                pacman.y += 30;
+                pacman.y++;
+            }
+            if(board[pacman.y][pacman.x] == 1){
+                board[pacman.y][pacman.x] = 0;
+                displayBoard();
             }
             displayPacman();
         }
         displayBoard();
+        displayPacman();
     </script>
 </body>
 
